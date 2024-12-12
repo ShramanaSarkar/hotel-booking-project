@@ -44,7 +44,7 @@ public class RoomService {
 	}
 	
 	
-	public ResponseEntity<ResponseStructure<Room>> findByUserId(int roomId){
+	public ResponseEntity<ResponseStructure<Room>> findByRoomId(int roomId){
 		Room dbRoom=roomDao.findbyRoomId(roomId);
 		ResponseStructure<Room> responseStructure=new ResponseStructure<>();
 		if(dbRoom!=null) {

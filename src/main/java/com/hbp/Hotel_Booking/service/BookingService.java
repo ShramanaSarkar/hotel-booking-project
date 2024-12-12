@@ -30,7 +30,7 @@ public class BookingService {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	public ResponseEntity<ResponseStructure<Booking>> saveBooking(BookingDto bookingDto, int roomId, int userId){
+	public ResponseEntity<ResponseStructure<Booking>> bookRoom(BookingDto bookingDto, int roomId, int userId){
 		Room room=roomDao.findbyRoomId(roomId);
 		User user=userDao.findByUserId(userId);
 		if(user!=null && room!=null && room.isAvailable()) {
@@ -59,7 +59,7 @@ public class BookingService {
 		
 	}
 	
-	public ResponseEntity<ResponseStructure<Booking>> removeBooking(int bookingId) {
+	public ResponseEntity<ResponseStructure<Booking>> vacateRoom(int bookingId) {
 	    
 	    Booking booking = bookingDao.findbyBookingId(bookingId);
 	    if (booking != null) {
