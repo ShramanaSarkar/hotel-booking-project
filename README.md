@@ -1,2 +1,2 @@
-# HotelManagementSystem
-HotelManagementSystem
+# HotelBookingProject
+HotelBookingProject
