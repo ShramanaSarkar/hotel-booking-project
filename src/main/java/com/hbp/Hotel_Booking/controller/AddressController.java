@@ -28,8 +28,8 @@ public class AddressController {
 		return addressService.saveAddress(addressDto);
 	}
 	@GetMapping("/{addressId}")
-	public ResponseEntity<ResponseStructure<Address>> findByAddressId(@PathVariable int adddressId){
-		return addressService.findByAddressId(adddressId);
+	public ResponseEntity<ResponseStructure<Address>> findByAddressId(@PathVariable int addressId){
+		return addressService.findByAddressId(addressId);
 	}
 	
 	@PutMapping("/{addressId}")
