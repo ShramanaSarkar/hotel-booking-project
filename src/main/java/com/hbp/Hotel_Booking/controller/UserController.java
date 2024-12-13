@@ -29,15 +29,15 @@ public class UserController {
 		return userService.saveUser(userDto, addressId);
 	}
 	@GetMapping("/{userId}")
-	public ResponseEntity<ResponseStructure<User>> findByUserId(int userId){
+	public ResponseEntity<ResponseStructure<User>> findByUserId(@PathVariable int userId){
 		return userService.findByUserId(userId);
 	}
 	@PutMapping("/{userId}")
-	public ResponseEntity<ResponseStructure<User>> updateUser(UserDto userDto, int userId){
+	public ResponseEntity<ResponseStructure<User>> updateUser(@RequestBody UserDto userDto,@PathVariable int userId){
 		return userService.updateUser(userDto, userId);
 	}
 	@DeleteMapping("/{userId}")
-	public ResponseEntity<ResponseStructure<User>> deleteUser(int userId){
+	public ResponseEntity<ResponseStructure<User>> deleteUser(@PathVariable int userId){
 		return userService.deleteUser(userId);
 	}
 	@GetMapping

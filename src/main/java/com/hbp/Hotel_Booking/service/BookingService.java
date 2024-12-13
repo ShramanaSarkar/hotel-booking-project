@@ -1,6 +1,7 @@
 package com.hbp.Hotel_Booking.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,9 @@ public class BookingService {
 			booking.setCheckinTime(LocalDateTime.now());
 			
 			if(room.getType()==RoomType.AC) {
-				booking.setTotalPrice(booking.getNumberOfGuest()*1999);
+				booking.setTotalPrice(booking.getNumberOfGuest()*room.getPrice());
 			}else {
-				booking.setTotalPrice(booking.getNumberOfGuest()*699);
+				booking.setTotalPrice(booking.getNumberOfGuest()*room.getPrice());
 			}
 			room.setAvailable(false);
 			roomDao.saveRoom(room);
@@ -83,5 +84,31 @@ public class BookingService {
 	    } else {
 	        throw new BookingIdNotFoundException("Booking ID not found");
 	    }
+	}
+	
+	public ResponseEntity<ResponseStructure<Booking>> findByBookingId(int bookingId){
+		Booking dbBooking=bookingDao.findbyBookingId(bookingId);
+		ResponseStructure<Booking> responseStructure=new ResponseStructure<>();
+		if(dbBooking!=null) {
+			responseStructure.setStatusCode(HttpStatus.OK.value());
+			responseStructure.setMessage("Booking found");
+			responseStructure.setData(dbBooking);
+			return new ResponseEntity<ResponseStructure<Booking>>(responseStructure,HttpStatus.OK);
+		}else {
+			throw new BookingIdNotFoundException("Booking ID not found");
+		}
+	}
+	
+	public ResponseEntity<ResponseStructure<List<Booking>>> findAll(){
+		List<Booking> bookingList=bookingDao.findAll();
+		ResponseStructure<List<Booking>> responseStructure=new ResponseStructure<>();
+		if(bookingList!=null) {
+			responseStructure.setStatusCode(HttpStatus.OK.value());
+			responseStructure.setMessage("Bookings Found");
+			responseStructure.setData(bookingList);
+			return new ResponseEntity<ResponseStructure<List<Booking>>>(responseStructure,HttpStatus.OK);
+		}else {
+			throw new BookingIdNotFoundException("Bookings not found");
+		}
 	}
 }
