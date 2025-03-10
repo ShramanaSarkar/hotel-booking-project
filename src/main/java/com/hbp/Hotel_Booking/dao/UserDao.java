@@ -10,18 +10,19 @@ import com.hbp.Hotel_Booking.repository.UserRepository;
 
 @Repository
 public class UserDao {
+
 	@Autowired
 	private UserRepository userRepository;
 	
 	public User saveUser(User user) {
 		return userRepository.save(user);
 	}
+
 	public User findByUserId(int userId) {
 		Optional<User> optional=userRepository.findById(userId);
-		if(optional.isPresent())
-			return optional.get();
-		return null;
-	}
+        return optional.orElse(null);
+    }
+
 	public User updateUser(int userId, User user) {
 		Optional<User> optional=userRepository.findById(userId);
 		if(optional.isPresent()) {
@@ -30,6 +31,7 @@ public class UserDao {
 		}
 		return null;
 	}
+
 	public User deleteUser(int userId) {
 	    Optional<User> optional = userRepository.findById(userId);
 	    if(optional.isPresent()) {

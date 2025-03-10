@@ -33,7 +33,6 @@ public class RoomService {
 		Room room=modelMapper.map(roomDto, Room.class);
 		
 		room.setHotel(dbhotel);
-		room.setType(RoomType.AC);
 		roomDao.saveRoom(room);
 		
 		ResponseStructure<Room> responseStructure=new ResponseStructure<Room>();
@@ -43,9 +42,8 @@ public class RoomService {
 		return new ResponseEntity<ResponseStructure<Room>>(responseStructure,HttpStatus.OK);
 	}
 	
-	
 	public ResponseEntity<ResponseStructure<Room>> findByRoomId(int roomId){
-		Room dbRoom=roomDao.findbyRoomId(roomId);
+		Room dbRoom=roomDao.findByRoomId(roomId);
 		ResponseStructure<Room> responseStructure=new ResponseStructure<>();
 		if(dbRoom!=null) {
 			responseStructure.setStatusCode(HttpStatus.OK.value());

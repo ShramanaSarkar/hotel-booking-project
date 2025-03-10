@@ -17,12 +17,11 @@ public class RoomDao {
 	public Room saveRoom(Room room) {
 		return roomRepository.save(room);
 	}
-	public Room findbyRoomId(int roomId) {
+
+	public Room findByRoomId(int roomId) {
 		Optional<Room> optional=roomRepository.findById(roomId);
-		if(optional.isPresent())
-			return optional.get();
-		return null;
-	}
+        return optional.orElse(null);
+    }
 	
 	public Room updateRoom(int roomId, Room room) {
 		Optional<Room> optional=roomRepository.findById(roomId);
@@ -32,6 +31,7 @@ public class RoomDao {
 		}
 		return null;
 	}
+
 	public Room deleteRoom(int roomId) {
 	    Optional<Room> optional = roomRepository.findById(roomId);
 	    if(optional.isPresent()) {

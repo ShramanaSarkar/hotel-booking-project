@@ -17,12 +17,12 @@ public class HotelDao {
 	public Hotel saveHotel(Hotel hotel) {
 		return hotelRepository.save(hotel);
 	}
+
 	public Hotel findByHotelId(int hotelId) {
 		Optional<Hotel> optional=hotelRepository.findById(hotelId);
-		if(optional.isPresent())
-			return optional.get();
-		return null;
-	}
+        return optional.orElse(null);
+    }
+
 	public Hotel updateHotel(int hotelId, Hotel hotel) {
 		Optional<Hotel> optional=hotelRepository.findById(hotelId);
 		if(optional.isPresent()) {
@@ -31,6 +31,7 @@ public class HotelDao {
 		}
 		return null;
 	}
+
 	public Hotel deleteHotel(int hotelId) {
 	    Optional<Hotel> optional = hotelRepository.findById(hotelId);
 	    if(optional.isPresent()) {

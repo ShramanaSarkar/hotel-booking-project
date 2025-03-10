@@ -11,6 +11,7 @@ import com.hbp.Hotel_Booking.repository.AddressRepository;
 
 @Repository
 public class AddressDao {
+
 	@Autowired
 	private AddressRepository addressRepository;
 	
@@ -30,10 +31,8 @@ public class AddressDao {
 	
 	public Address findByAddressId(int addressId) {
 		Optional<Address> optional=addressRepository.findById(addressId);
-		if(optional.isPresent()) 
-			return optional.get();
-		return null;
-	}
+        return optional.orElse(null);
+    }
 	
 	public Address deleteAddress(int addressId) {
 		Optional<Address> optional=addressRepository.findById(addressId);

@@ -17,12 +17,12 @@ public class BookingDao {
 	public Booking saveBooking(Booking booking) {
 		return bookingRepository.save(booking);
 	}
-	public Booking findbyBookingId(int bookingId) {
+
+	public Booking findByBookingId(int bookingId) {
 		Optional<Booking> optional=bookingRepository.findById(bookingId);
-		if(optional.isPresent())
-			return optional.get();
-		return null;
-	}
+        return optional.orElse(null);
+    }
+
 	public Booking updateBooking(int bookingId, Booking booking) {
 		Optional<Booking> optional=bookingRepository.findById(bookingId);
 		if(optional.isPresent()) {
@@ -31,6 +31,7 @@ public class BookingDao {
 		}
 		return null;
 	}
+
 	public Booking deleteBooking(int bookingId) {
 	    Optional<Booking> optional = bookingRepository.findById(bookingId);
 	    if(optional.isPresent()) {

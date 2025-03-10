@@ -11,13 +11,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Address {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int addressId;
+
 	private int number;
+
 	private String area;
+
 	private String city;
+
 	private String state;
+
 	private long pincode;
 	
 	

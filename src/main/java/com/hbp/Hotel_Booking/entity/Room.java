@@ -14,13 +14,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Room {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int roomId;
+
 	private int roomNumber;
+
 	private int price;
+
 	private boolean available;
+
 	private RoomType type;
+
 	@ManyToOne
 	private Hotel hotel;
 	

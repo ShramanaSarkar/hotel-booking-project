@@ -21,24 +21,30 @@ import com.hbp.Hotel_Booking.util.ResponseStructure;
 @RestController
 @RequestMapping("/room")
 public class RoomController {
+
 	@Autowired
 	private RoomService roomService;
+
 	@PostMapping("/{hotelId}")
 	public ResponseEntity<ResponseStructure<Room>> saveRoom(@RequestBody RoomDto roomDto,@PathVariable int hotelId){
 		return roomService.saveRoom(roomDto, hotelId);
 	}
+
 	@GetMapping("/{roomId}")
 	public ResponseEntity<ResponseStructure<Room>> findByRoomId(@PathVariable int roomId){
 		return roomService.findByRoomId(roomId);
 	}
+
 	@PutMapping("/{roomId}")
 	public ResponseEntity<ResponseStructure<Room>> updateRoom(@RequestBody RoomDto roomDto,@PathVariable int roomId){
 		return roomService.updateRoom(roomDto, roomId);
 	}
+
 	@DeleteMapping("/{roomId}")
 	public ResponseEntity<ResponseStructure<Room>> deleteRoom(@PathVariable int roomId){
 		return roomService.deleteRoom(roomId);
 	}
+
 	@GetMapping
 	public ResponseEntity<ResponseStructure<List<Room>>> findAll(){
 		return roomService.findAll();

@@ -9,19 +9,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
+
 @Entity
 @Getter
 @Setter
 public class Booking {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookingId;
+
 	private int numberOfGuest;
+
 	private int totalPrice;
-	private LocalDateTime checkinTime;
-	private LocalDateTime checkoutTime;
+
+	private LocalDateTime checkInTime;
+
+	private LocalDateTime checkOutTime;
+
 	@ManyToOne
 	private Room room;
+
 	@ManyToOne
 	private User user;
 

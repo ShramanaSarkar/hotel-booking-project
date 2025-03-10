@@ -21,6 +21,7 @@ import com.hbp.Hotel_Booking.util.ResponseStructure;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
 	@Autowired
 	private UserService userService;
 	
@@ -28,18 +29,22 @@ public class UserController {
 	public ResponseEntity<ResponseStructure<User>> saveUser(@RequestBody UserDto userDto,@PathVariable int addressId){
 		return userService.saveUser(userDto, addressId);
 	}
+
 	@GetMapping("/{userId}")
 	public ResponseEntity<ResponseStructure<User>> findByUserId(@PathVariable int userId){
 		return userService.findByUserId(userId);
 	}
+
 	@PutMapping("/{userId}")
 	public ResponseEntity<ResponseStructure<User>> updateUser(@RequestBody UserDto userDto,@PathVariable int userId){
 		return userService.updateUser(userDto, userId);
 	}
+
 	@DeleteMapping("/{userId}")
 	public ResponseEntity<ResponseStructure<User>> deleteUser(@PathVariable int userId){
 		return userService.deleteUser(userId);
 	}
+
 	@GetMapping
 	public ResponseEntity<ResponseStructure<List<User>>> findAll(){
 		return userService.findAll();

@@ -21,12 +21,15 @@ import com.hbp.Hotel_Booking.util.ResponseStructure;
 @RestController
 @RequestMapping("/address")
 public class AddressController {
+
 	@Autowired
 	private AddressService addressService;
+
 	@PostMapping
 	public ResponseEntity<ResponseStructure<Address>> saveAddress(@RequestBody AddressDto addressDto){
 		return addressService.saveAddress(addressDto);
 	}
+
 	@GetMapping("/{addressId}")
 	public ResponseEntity<ResponseStructure<Address>> findByAddressId(@PathVariable int addressId){
 		return addressService.findByAddressId(addressId);

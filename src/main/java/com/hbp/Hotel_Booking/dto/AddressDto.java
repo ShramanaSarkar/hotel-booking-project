@@ -8,9 +8,14 @@ import lombok.Setter;
 public class AddressDto {
 
 	private int addressId;
+
 	private int number;
+
 	private String area;
+
 	private String city;
+
 	private String state;
+
 	private long pincode;
 }
